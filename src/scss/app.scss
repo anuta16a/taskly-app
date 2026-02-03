@@ -1,10 +1,779 @@
-@use './module.scss';
+@use 'fonts';
 
-html {
-  color-scheme: light dark;
-  font-family: system-ui;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Color Palette
+$lightColor: #DFE1DB;
+$darkColor: #232323;
+$brownActiveColor: #61574C;
+$lightBrownColor: #C5C6C1;
+$brownColor: #9A9286;
+$darkBrownColor: #706458;
+$redColor: #8C2727;
+
+// Topic Colors
+$bugColor: #8C2727;
+$featureColor: #3C449D;
+$improvementColor: #DBD751;
+$designColor: #CA9A4C;
+$docsColor: #898989;
+$researchColor: #709460;
+
+body {
+    background-image: url(../images/bg-image.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Switzer', sans-serif;
+    min-height: 100vh;
+}
+
+// Header
+.header {
+    background-color: rgba($darkBrownColor, 0.40);
+
+    &__container {
+        max-width: 1280px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        margin: 0 auto;
+    }
+
+    &__logo {
+        font-weight: 300;
+        font-size: 42px;
+        letter-spacing: 3px;
+        color: $lightColor;
+    }
+
+    &__current-time {
+        font-weight: 500;
+        font-size: 28px;
+        letter-spacing: 2px;
+        color: rgba($lightColor, 0.7);
+    }
+}
+
+// Main Container
+.main {
+    &__container {
+        max-width: 1320px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 40px 20px 100px;
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+    }
+}
+
+// Columns
+.column {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+    &__header {
+        padding: 10px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-family: inherit;
+        font-weight: 400;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    &__counter {
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    &__body {
+        padding: 20px;
+    }
+
+    &__btn {
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 1px;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+// Upcomming Column
+.upcomming {
+    background-color: rgba($darkBrownColor, 0.7);
+
+    &__header {
+        background-color: rgba($darkBrownColor, 0.5);
+        color: rgba($lightColor, 0.80);
+    }
+
+    &__add-btn {
+        background-color: rgba($darkBrownColor, 0.5);
+        color: $lightColor;
+        transition: background-color 0.1s linear,
+                    font-size 0.1s linear;
+
+        &:hover {
+            background-color: rgba($darkBrownColor, 0.7);
+            font-size: 18px;
+        }
+
+        &:active {
+            background-color: $brownActiveColor;
+            font-size: 16px;
+        }
+    }
+}
+
+// In Progress Column
+.in-progress {
+    background-color: rgba($brownColor, 0.7);
+
+    &__header {
+        background-color: rgba($brownColor, 0.5);
+        color:  rgba($lightColor, 0.80);
+    }
+}
+
+// Done Column
+.done {
+    background-color:rgba($lightColor, 0.7);;
+
+    &__header {
+        background-color: rgba($lightColor, 0.5);
+        color:  rgba($darkColor, 0.80);
+    }
+
+    &__delete-btn {
+        background-color: rgba($lightColor, 0.5);
+        color: $darkColor;
+        transition: background-color 0.1s linear,
+                    font-size 0.1s linear;
+
+        &:hover {
+            background-color: rgba($lightColor, 0.7);
+            font-size: 18px;
+        }
+
+        &:active {
+            background-color: $lightBrownColor;
+            font-size: 16px;
+        }
+    }
+}
+
+// Task Card
+.task {
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &--bug { background-color: rgba($bugColor, 0.65); }
+    &--feature { background-color: rgba($featureColor, 0.65); }
+    &--design { background-color: rgba($designColor, 0.65); }
+    &--improvement { background-color: rgba($improvementColor, 0.65); }
+    &--research { background-color: rgba($researchColor, 0.65); }
+    &--docs { background-color: rgba($docsColor, 0.65); }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 7px;
+        padding: 10px 20px;
+        background-color: rgba($lightColor, 0.40);
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    &__title {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba($darkColor, 0.80);
+        text-align: center;
+    }
+
+    &__move-popover {
+        position: relative;
+    }
+
+    &__move-popover-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.1s linear;
+        &:hover {
+            transform: scale(1.15);
+        }
+        &:active {
+            transform: scale(1.00);
+        }
+    }
+
+    &__move-popover-content {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: -30px;
+        width: max-content;
+        background-color: rgba($lightColor, 0.80);
+        border-radius: 8px;
+        padding: 7px;
+        box-shadow: 0 4px 12px rgba($darkColor, 0.15);
+
+        &--hidden {
+            display: none;
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            right: 25px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 10px solid rgba($lightColor, 0.80);
+        }
+    }
+
+    &__move-list {
+        list-style: none;
+    }
+
+    &__move-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__move-name-btn {
+        border: none;
+        background: transparent;
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 400;
+        color: $darkColor;
+        cursor: pointer;
+        margin-right: 9px;
+        transition: font-size 0.1s linear;
+
+        &:hover {
+            font-size: 13px;
+        }
+        &:active {
+            font-size: 13px;
+        }
+    }
+
+    &__move-select-icon {
+        &--hidden {
+            visibility: hidden;
+        }
+    }
+
+    &__body {
+        border-radius: 7px;
+        padding: 10px 15px;
+        background-color: rgba($lightColor, 0.60);
+        margin-bottom: 10px;
+    }
+
+    &__description {
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 400;
+        color: $darkColor;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 8px;
+        border-top: 1px solid rgba($darkColor, 0.1);
+    }
+
+    &__user {
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgba($darkColor, 0.80);
+    }
+
+    &__time {
+        font-family: inherit;
+        font-size: 10px;
+        font-weight: 400;
+        color: rgba($darkColor, 0.60);
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__edit-btn {
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: $darkColor;
+        padding: 3px 8px;
+        border: none;
+        border-radius: 6px;
+        background-color: rgba($lightColor, 0.70);
+        opacity: 0.8;
+        cursor: pointer;
+        transition: opacity 0.1s linear,
+                    transform 0.1s linear;
+
+        &:hover {
+            opacity: 1.0;
+            transform: scale(1.05);
+        }
+        &:active {
+            opacity: 1.0;
+            transform: scale(1.00);
+        }
+
+    }
+
+    &__delete-btn {
+        border: none;
+        border-radius: 6px;
+        border: 0.5px solid rgba($darkColor, 0.25);
+        background-color: $redColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.1s linear,
+                    transform 0.1s linear;
+
+        &:hover {
+            background-color: darken($redColor, 3%);
+        }
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+}
+
+// Modal Overlay
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($darkColor, 0.5);
+    z-index: 1000;
+}
+
+.task-modal--hidden,
+.warning-modal--hidden {
+    display: none;
+}
+
+// Task Modal
+.task-modal {
+    max-width: 640px;
+    width: 100%;
+    padding: 30px 40px;
+    border-radius: 15px;
+    background: linear-gradient(180deg, rgba($lightColor, 0.70) 0%, $lightBrownColor 50%, rgba($brownColor, 0.70) 100%);
+
+    &__header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 14px;
+    }
+
+    &__title {
+        font: inherit;
+        font-size: 18px;
+        font-weight: 500;
+        color: rgba($darkColor, 0.85);
+        flex: 1;
+        padding: 10px 20px;
+        outline: none;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba($lightColor, 0.8);
+
+        &::placeholder {
+            color: rgba($darkColor, 0.4);
+        }
+    }
+
+    &__topic-popover {
+        position: relative;
+    }
+
+    &__topic-popover-btn {
+        background: none;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        transition: transform 0.1s linear;
+        &:hover {
+            transform: scale(1.20);
+        }
+        &:active {
+            transform: scale(1.0);
+        }
+    }
+
+    &__topic-popover-content {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: max-content;
+        background-color: $lightColor;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 4px 16px rgba($darkColor, 0.15);
+        z-index: 10;
+    }
+
+    &__topic-popover-content--hidden {
+        display: none;
+    }
+
+    &__topic-header {
+        font-size: 16px;
+        font-weight: 600;
+        color: $darkColor;
+        margin-bottom: 8px;
+    }
+
+    &__topic-decoration {
+        line-height: 0;
+        margin-bottom: 10px;
+    }
+
+    &__topic-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    &__topic-item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 6px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.1s linear;
+
+        &:hover {
+            background-color: rgba($darkColor, 0.05);
+        }
+    }
+
+    &__topic-color {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: relative;
+        transition: transform 0.1s linear;
+        &:hover {
+            transform: scale(1.10);
+        }
+    }
+
+    &__topic-select {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__topic-select--hidden {
+        display: none;
+    }
+
+    &__topic-color--bug { background-color: rgba($bugColor, 0.80); }
+    &__topic-color--feature { background-color: rgba($featureColor, 0.80); }
+    &__topic-color--design { background-color: rgba($designColor, 0.80); }
+    &__topic-color--improvement { background-color: rgba($improvementColor, 0.80); }
+    &__topic-color--research { background-color: rgba($researchColor, 0.80); }
+    &__topic-color--docs { background-color: rgba($docsColor, 0.80); }
+
+    &__topic-name {
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 400;
+        color: $darkColor;
+    }
+
+    &__description {
+        font: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        color: $darkColor;
+        width: 100%;
+        padding: 10px 20px;
+        outline: none;
+        resize: none;
+        border: none;
+        border-radius: 10px;
+        background-color: rgba($lightColor, 0.60);
+        margin-bottom: 10px;
+        line-height: 1.5;
+
+        &::placeholder {
+            color: rgba($darkColor, 0.4);
+        }
+    }
+
+    &__user-btn {
+        font-size: 14px;
+        font-weight: 500;
+        color: $darkColor;
+        background-color: rgba($lightColor, 0.50);
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 10px 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        transition: background-color 0.1s linear,
+                    transform 0.1s linear;
+
+        &:hover {
+            background-color: rgba($lightColor, 0.70);
+            transform: scale(1.05);
+        }
+        &:active {
+            transform: scale(1.00);
+        }
+    }
+
+    &__user-popover {
+        position: relative;
+    }
+
+    &__user-popover-content {
+        position: absolute;
+        bottom: -20px;
+        right: calc(100% + 10px);
+        width: max-content;
+        background-color: rgba($lightColor, 0.85);
+        border-radius: 10px;
+        padding: 14px;
+        box-shadow: 0 4px 16px rgba($darkColor, 0.15);
+    }
+
+    &__user-popover-content--hidden {
+        display: none;
+    }
+
+    &__user-list {
+        list-style: none;
+    }
+
+    &__user {
+        position: relative;
+        margin: 0 0 6px 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__user-name {
+        border: none;
+        background: transparent;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($darkColor, 0.1);
+        }
+    }
+
+    &__user-select {
+        position: absolute;
+        top: 15%;
+        right: 100%;
+    }
+
+    &__user-select--hidden {
+        display: none;
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+
+    &__control-btn {
+        font-family: inherit;
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &--cancel {
+            color: $darkColor;
+            background-color: rgba($lightColor, 0.80);
+            transition: background-color 0.1s linear,
+                        transform 0.1s linear;
+
+            &:hover {
+                background-color: rgba($lightColor, 0.90);
+                transform: scale(1.05);
+            }
+            &:active {
+                transform: scale(1.00);
+            }
+        }
+
+        &--confirm {
+            color: $lightColor;
+            background-color:  rgba($darkColor, 0.80);
+
+           transition: background-color 0.1s linear,
+                        transform 0.1s linear;
+
+            &:hover {
+                background-color: rgba($darkColor, 0.90);
+                transform: scale(1.05);
+            }
+            &:active {
+                transform: scale(1.00);
+            }
+        }
+    }
+}
+
+// Warning Modal
+.warning-modal {
+    max-width: 330px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba($lightColor, 0.90) 0%, rgba($lightBrownColor, 0.90) 50%, rgba($brownColor, 0.90) 100%);
+    text-align: center;
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    &__title {
+        font-size: 16px;
+        font-weight: 600;
+        color: $darkColor;
+    }
+
+    &__line {
+        line-height: 0;
+        margin-bottom: 15px;
+    }
+
+    &__text {
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba($darkColor, 0.8);
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    &__btn {
+        font: inherit;
+        font-size: 14px;
+        font-weight: 500;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 20px;
+        cursor: pointer;
+
+        &--cancel {
+            background-color:rgba($lightColor, 0.80);
+            color: $darkColor;
+            transition: background-color 0.1s linear,
+                        transform 0.1s linear;
+
+            &:hover {
+                background-color: $lightColor;
+                transform: scale(1.02);
+            }
+            &:active {
+                transform: scale(1.00);
+            }
+        }
+
+        &--delete {
+            background-color: rgba($redColor, 0.80);
+            color: $lightColor;
+            transition: background-color 0.1s linear,
+                        transform 0.1s linear;
+
+            &:hover {
+                background-color: $redColor;
+                transform: scale(1.02);
+            }
+            &:active {
+                transform: scale(1.00);
+            }
+        }
+    }
 }
