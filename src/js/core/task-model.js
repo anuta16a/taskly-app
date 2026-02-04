@@ -14,7 +14,6 @@ class Task {
     this.topic = topic
     this.location = location
     this.user = user
-    this.timeMinutes = timeMinutes
 
     this.createdAt = Date.now()
     this.updatedAt = Date.now()
