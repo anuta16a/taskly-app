@@ -18,13 +18,13 @@ $redColor: #8C2727;
 // Topic Colors
 $bugColor: #8C2727;
 $featureColor: #3C449D;
-$improvementColor: #DBD751;
+$improvementColor: #EEE149;
 $designColor: #CA9A4C;
 $docsColor: #898989;
 $researchColor: #709460;
 
 body {
-    background-image: url(../images/bg-image.png);
+    background-image: url(../images/bg-image-1.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -79,13 +79,16 @@ body {
 .column {
     width: 100%;
     border-radius: 15px;
+    border: 0.5px solid rgba($lightColor, 0.25);
+    backdrop-filter: blur(6px);
     overflow: hidden;
 
     &__header {
-        padding: 10px 30px;
+        padding: 15px 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border: 0.3px solid rgba($lightColor, 0.25);
     }
 
     &__title {
@@ -107,76 +110,78 @@ body {
 
     &__btn {
         font-weight: 400;
-        font-size: 16px;
+        font-size: 18px;
         letter-spacing: 1px;
         width: 100%;
-        padding: 10px 0;
+        padding: 15px 0;
         text-align: center;
         border: none;
+        border: 0.3px solid rgba($lightColor, 0.25);
         cursor: pointer;
     }
 }
 
 // Upcomming Column
 .upcomming {
-    background-color: rgba($darkBrownColor, 0.7);
+    background-color: rgba($darkBrownColor, 0.3);
 
     &__header {
-        background-color: rgba($darkBrownColor, 0.5);
-        color: rgba($lightColor, 0.80);
+        background-color: rgba($darkBrownColor, 0.3);
+        color: rgba($lightColor, 0.70);
     }
 
     &__add-btn {
-        background-color: rgba($darkBrownColor, 0.5);
-        color: $lightColor;
+        background-color: rgba($darkBrownColor, 0.3);
+        color: rgba($lightColor, 0.80);
         transition: background-color 0.1s linear,
                     font-size 0.1s linear;
 
         &:hover {
-            background-color: rgba($darkBrownColor, 0.7);
-            font-size: 18px;
+            background-color: rgba($darkBrownColor, 0.5);
+            font-size: 19px;
+            color: $lightColor;
         }
 
         &:active {
-            background-color: $brownActiveColor;
-            font-size: 16px;
+            background-color: rgba($darkBrownColor, 0.7);
+            font-size: 18px;
         }
     }
 }
 
 // In Progress Column
 .in-progress {
-    background-color: rgba($brownColor, 0.7);
+    background-color: rgba($brownColor, 0.3);
 
     &__header {
-        background-color: rgba($brownColor, 0.5);
-        color:  rgba($lightColor, 0.80);
+        background-color: rgba($brownColor, 0.3);
+        color:  rgba($lightColor, 0.85);
     }
 }
 
 // Done Column
 .done {
-    background-color:rgba($lightColor, 0.7);;
+    background-color:rgba($lightColor, 0.3);;
 
     &__header {
-        background-color: rgba($lightColor, 0.5);
-        color:  rgba($darkColor, 0.80);
+        background-color: rgba($lightColor, 0.3);
+        color: $darkColor;
     }
 
     &__delete-btn {
-        background-color: rgba($lightColor, 0.5);
+        background-color: rgba($lightColor, 0.3);
         color: $darkColor;
         transition: background-color 0.1s linear,
                     font-size 0.1s linear;
 
         &:hover {
-            background-color: rgba($lightColor, 0.7);
-            font-size: 18px;
+            background-color: rgba($lightColor, 0.5);
+            font-size: 19px;
         }
 
         &:active {
-            background-color: $lightBrownColor;
-            font-size: 16px;
+            background-color: rgba($lightColor, 0.7);;
+            font-size: 18px;
         }
     }
 }
@@ -186,18 +191,19 @@ body {
     width: 100%;
     padding: 15px;
     border-radius: 15px;
+    box-shadow: 0 8px 24px rgba($darkColor, 0.25);
     margin-bottom: 15px;
 
     &:last-child {
         margin-bottom: 0;
     }
 
-    &--bug { background-color: rgba($bugColor, 0.65); }
-    &--feature { background-color: rgba($featureColor, 0.65); }
-    &--design { background-color: rgba($designColor, 0.65); }
-    &--improvement { background-color: rgba($improvementColor, 0.65); }
-    &--research { background-color: rgba($researchColor, 0.65); }
-    &--docs { background-color: rgba($docsColor, 0.65); }
+    &--bug { background: linear-gradient(180deg, rgba($lightColor, 0.20), rgba($lightColor, 0.05)), rgba($bugColor, 0.60); }
+    &--feature { background: linear-gradient(180deg, rgba($lightColor, 0.20), rgba($lightColor, 0.05)), rgba($featureColor, 0.60); }
+    &--design { background: linear-gradient(180deg, rgba($lightColor, 0.20), rgba($lightColor, 0.05)), rgba($designColor, 0.60); }
+    &--improvement { background: linear-gradient(180deg, rgba($lightColor, 0.20), rgba($lightColor, 0.05)), rgba($improvementColor, 0.60); }
+    &--research { background: linear-gradient(180deg, rgba($lightColor, 0.20), rgba($lightColor, 0.05)), rgba($researchColor, 0.60); }
+    &--docs { background: linear-gradient(180deg, rgba($lightColor, 0.20), rgba($lightColor, 0.05)), rgba($docsColor, 0.60); }
 
     &__header {
         display: flex;
@@ -206,7 +212,7 @@ body {
         border-radius: 7px;
         padding: 10px 20px;
         background-color: rgba($lightColor, 0.40);
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         position: relative;
     }
 
@@ -214,7 +220,7 @@ body {
         width: 100%;
         font-size: 16px;
         font-weight: 500;
-        color: rgba($darkColor, 0.80);
+        color: $darkColor;
         text-align: center;
     }
 
@@ -240,7 +246,8 @@ body {
         top: calc(100% + 10px);
         right: -30px;
         width: max-content;
-        background-color: rgba($lightColor, 0.80);
+        background-color: rgba($lightColor, 0.60);
+        backdrop-filter: blur(6px);
         border-radius: 8px;
         padding: 7px;
         box-shadow: 0 4px 12px rgba($darkColor, 0.15);
@@ -257,7 +264,8 @@ body {
             height: 0;
             border-left: 8px solid transparent;
             border-right: 8px solid transparent;
-            border-bottom: 10px solid rgba($lightColor, 0.80);
+            border-bottom: 10px solid rgba($lightColor, 0.60);
+            backdrop-filter: blur(6px);
         }
     }
 
@@ -304,7 +312,7 @@ body {
         border-radius: 7px;
         padding: 10px 15px;
         background-color: rgba($lightColor, 0.60);
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     &__description {
@@ -333,9 +341,9 @@ body {
 
     &__time {
         font-family: inherit;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 400;
-        color: rgba($darkColor, 0.60);
+        color: rgba($darkColor, 0.90);
     }
 
     &__controls {
@@ -345,16 +353,15 @@ body {
     }
 
     &__edit-btn {
-        font-family: inherit;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        color: $darkColor;
-        padding: 3px 8px;
-        border: none;
-        border-radius: 6px;
-        background-color: rgba($lightColor, 0.70);
+        display: flex;
+        gap: 5px;
+        align-items: center; 
+        padding: 3px 15px;
+        border: 0.3px solid rgba($lightColor, 0.30);
+        border-radius: 5px;
+        background-color: rgba($lightColor, 0.30);
         opacity: 0.8;
+        box-shadow: 0 4px 16px rgba($darkColor, 0.15);
         cursor: pointer;
         transition: opacity 0.1s linear,
                     transform 0.1s linear;
@@ -370,24 +377,36 @@ body {
 
     }
 
+    &__edit-btn-text {
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: $lightColor;
+    }
+
     &__delete-btn {
         border: none;
         border-radius: 6px;
-        border: 0.5px solid rgba($darkColor, 0.25);
+        border: 0.5px solid rgba($lightColor, 0.25);
         background-color: $redColor;
+        opacity: 0.8;
+        box-shadow: 0 4px 16px rgba($darkColor, 0.15);
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 8px;
+        padding: 3px 10px;
         cursor: pointer;
-        transition: background-color 0.1s linear,
+        transition: opacity 0.1s linear,
                     transform 0.1s linear;
 
         &:hover {
-            background-color: darken($redColor, 3%);
+            opacity: 1.00;
+            transform: scale(1.05);
         }
         &:active {
-            transform: scale(0.95);
+            opacity: 1.00;
+            transform: scale(1.00);
         }
     }
 }
@@ -410,26 +429,24 @@ body {
 
 // Task Modal
 .task-modal {
-    max-width: 640px;
+    max-width: 600px;
     width: 100%;
     padding: 30px 40px;
     border-radius: 15px;
+    border: 0.3px solid rgba($lightColor, 0.30);
     background: linear-gradient(180deg, rgba($lightColor, 0.70) 0%, $lightBrownColor 50%, rgba($brownColor, 0.70) 100%);
+    backdrop-filter: blur(6px);
 
     &__header {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        margin-bottom: 20px;
-        gap: 14px;
+        margin-bottom: 10px;
     }
 
     &__title {
+        width: 100%;
         font: inherit;
         font-size: 18px;
         font-weight: 500;
         color: rgba($darkColor, 0.85);
-        flex: 1;
         padding: 10px 20px;
         outline: none;
         border: none;
@@ -437,26 +454,137 @@ body {
         background-color: rgba($lightColor, 0.8);
 
         &::placeholder {
+            color: rgba($darkColor, 0.5);
+        }
+    }
+
+    &__description {
+        font: inherit;
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: rgba($darkColor, 0.85);
+        width: 100%;
+        padding: 10px 20px;
+        outline: none;
+        resize: none;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba($lightColor, 0.60);
+        margin-bottom: 15px;
+
+        &::placeholder {
             color: rgba($darkColor, 0.4);
         }
     }
+    &__popovers {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
+    &__user-popover,
     &__topic-popover {
+        max-width: 250px;
+        width: 100%;
+    }
+
+    &__popover-btn {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        color: $darkColor;
+        background-color: rgba($lightColor, 0.50);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.1s linear,
+                    transform 0.1s linear;
+
+        &:hover {
+            background-color: rgba($lightColor, 0.70);
+            transform: scale(1.05);
+        }
+        &:active {
+            transform: scale(1.00);
+        }
+    }
+
+    &__user-popover {
         position: relative;
     }
 
-    &__topic-popover-btn {
-        background: none;
+    &__user-popover-content {
+        position: absolute;
+        bottom: -20px;
+        right: calc(100% + 10px);
+        width: max-content;
+        background-color: rgba($lightColor, 0.85);
+        backdrop-filter: blur(6px);
+        border-radius: 10px;
+        padding: 14px;
+        box-shadow: 0 4px 16px rgba($darkColor, 0.15);
+    }
+
+    &__user-popover-content--hidden {
+        display: none;
+    }
+
+    &__user-list {
+        list-style: none;
+    }
+
+    &__user {
+        position: relative;
+        margin: 0 0 6px 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__user-name {
         border: none;
-        padding: 10px;
+        background: transparent;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 6px 10px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: transform 0.1s linear;
+
         &:hover {
-            transform: scale(1.20);
+            background-color: rgba($darkColor, 0.1);
         }
-        &:active {
-            transform: scale(1.0);
-        }
+    }
+
+    &__user-select {
+        position: absolute;
+        top: 15%;
+        right: 100%;
+    }
+
+    &__user-select--hidden {
+        display: none;
+    }
+
+     &__topic-popover {
+        position: relative;
+    }
+
+    &__topic-popover-btn-content {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    &__topic-popover-btn-content--hidden {
+        display: none;
     }
 
     &__topic-popover-content {
@@ -464,7 +592,8 @@ body {
         top: calc(100% + 10px);
         right: 0;
         width: max-content;
-        background-color: $lightColor;
+        background-color: rgba($lightColor, 0.85);
+        backdrop-filter: blur(6px);
         border-radius: 12px;
         padding: 16px;
         box-shadow: 0 4px 16px rgba($darkColor, 0.15);
@@ -529,7 +658,10 @@ body {
     &__topic-select--hidden {
         display: none;
     }
-
+    &__topic-color--btn {
+        width: 19px;
+        height: 19px;
+    }
     &__topic-color--bug { background-color: rgba($bugColor, 0.80); }
     &__topic-color--feature { background-color: rgba($featureColor, 0.80); }
     &__topic-color--design { background-color: rgba($designColor, 0.80); }
@@ -539,111 +671,12 @@ body {
 
     &__topic-name {
         font-family: inherit;
-        font-size: 13px;
-        font-weight: 400;
-        color: $darkColor;
-    }
-
-    &__description {
-        font: inherit;
         font-size: 14px;
         font-weight: 400;
         color: $darkColor;
-        width: 100%;
-        padding: 10px 20px;
-        outline: none;
-        resize: none;
-        border: none;
-        border-radius: 10px;
-        background-color: rgba($lightColor, 0.60);
-        margin-bottom: 10px;
-        line-height: 1.5;
-
-        &::placeholder {
-            color: rgba($darkColor, 0.4);
+        &--btn {
+            font-size: 16px;
         }
-    }
-
-    &__user-btn {
-        font-size: 14px;
-        font-weight: 500;
-        color: $darkColor;
-        background-color: rgba($lightColor, 0.50);
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        padding: 10px 14px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        margin-bottom: 5px;
-        transition: background-color 0.1s linear,
-                    transform 0.1s linear;
-
-        &:hover {
-            background-color: rgba($lightColor, 0.70);
-            transform: scale(1.05);
-        }
-        &:active {
-            transform: scale(1.00);
-        }
-    }
-
-    &__user-popover {
-        position: relative;
-    }
-
-    &__user-popover-content {
-        position: absolute;
-        bottom: -20px;
-        right: calc(100% + 10px);
-        width: max-content;
-        background-color: rgba($lightColor, 0.85);
-        border-radius: 10px;
-        padding: 14px;
-        box-shadow: 0 4px 16px rgba($darkColor, 0.15);
-    }
-
-    &__user-popover-content--hidden {
-        display: none;
-    }
-
-    &__user-list {
-        list-style: none;
-    }
-
-    &__user {
-        position: relative;
-        margin: 0 0 6px 10px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    &__user-name {
-        border: none;
-        background: transparent;
-        font-family: inherit;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 6px 10px;
-        border-radius: 8px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgba($darkColor, 0.1);
-        }
-    }
-
-    &__user-select {
-        position: absolute;
-        top: 15%;
-        right: 100%;
-    }
-
-    &__user-select--hidden {
-        display: none;
     }
 
     &__controls {
@@ -654,9 +687,9 @@ body {
 
     &__control-btn {
         font-family: inherit;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 500;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
         padding: 10px 25px;
         border: none;
         border-radius: 5px;
@@ -664,12 +697,12 @@ body {
 
         &--cancel {
             color: $darkColor;
-            background-color: rgba($lightColor, 0.80);
+            background-color: rgba($lightColor, 0.60);
             transition: background-color 0.1s linear,
                         transform 0.1s linear;
 
             &:hover {
-                background-color: rgba($lightColor, 0.90);
+                background-color: rgba($lightColor, 0.75);
                 transform: scale(1.05);
             }
             &:active {
@@ -679,13 +712,13 @@ body {
 
         &--confirm {
             color: $lightColor;
-            background-color:  rgba($darkColor, 0.80);
+            background-color:  rgba($darkColor, 0.70);
 
            transition: background-color 0.1s linear,
                         transform 0.1s linear;
 
             &:hover {
-                background-color: rgba($darkColor, 0.90);
+                background-color: rgba($darkColor, 0.80);
                 transform: scale(1.05);
             }
             &:active {
@@ -697,11 +730,13 @@ body {
 
 // Warning Modal
 .warning-modal {
-    max-width: 330px;
+    max-width: 420px;
     width: 100%;
-    padding: 20px;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba($lightColor, 0.90) 0%, rgba($lightBrownColor, 0.90) 50%, rgba($brownColor, 0.90) 100%);
+    padding: 20px 30px;
+    border-radius: 15px;
+    border: 0.3px solid rgba($lightColor, 0.25);
+    background: linear-gradient(180deg, rgba($lightColor, 0.70) 0%, rgba($lightBrownColor, 0.60) 50%, rgba($brownColor, 0.50) 100%);
+    backdrop-filter: blur(4px);
     text-align: center;
 
     &__header {
@@ -712,23 +747,27 @@ body {
         margin-bottom: 8px;
     }
 
+    &__icon {
+        transform: scale(1.3);
+    }
+
     &__title {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 600;
-        color: $darkColor;
+        color: rgba($darkColor, 0.90);
     }
 
     &__line {
         line-height: 0;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
 
     &__text {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
-        color: rgba($darkColor, 0.8);
+        color: rgba($darkColor, 0.85);
         line-height: 1.5;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     &__controls {
@@ -738,22 +777,23 @@ body {
     }
 
     &__btn {
-        font: inherit;
-        font-size: 14px;
+        font-family: inherit;
+        font-size: 18px;
         font-weight: 500;
+        letter-spacing: 1px;
+        padding: 10px 25px;
         border: none;
         border-radius: 5px;
-        padding: 8px 20px;
         cursor: pointer;
 
         &--cancel {
-            background-color:rgba($lightColor, 0.80);
+            background-color:rgba($lightColor, 0.60);
             color: $darkColor;
             transition: background-color 0.1s linear,
                         transform 0.1s linear;
 
             &:hover {
-                background-color: $lightColor;
+                background-color: rgba($lightColor, 0.80);;
                 transform: scale(1.02);
             }
             &:active {
@@ -762,7 +802,7 @@ body {
         }
 
         &--delete {
-            background-color: rgba($redColor, 0.80);
+            background-color: rgba($redColor, 0.70);
             color: $lightColor;
             transition: background-color 0.1s linear,
                         transform 0.1s linear;

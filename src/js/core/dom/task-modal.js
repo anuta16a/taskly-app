@@ -8,10 +8,27 @@ const taskModalUserEl = $('.task-modal__user')
 const taskModalTopicPopoverContentEl = $('.task-modal__topic-popover-content')
 const taskModalTopicPopoverBtnEl = $('.task-modal__topic-popover-btn')
 const taskModalTopicItemsEl = $$('.task-modal__topic-item')
-const taskModalTopicBtnPathEl = $('.task-modal__topic-popover-btn svg path')
+
+const taskModalTopicBtnDefaultEl = $('.task-modal__topic-popover-btn-content-default')
+const taskModalTopicBtnBugEl = $('.task-modal__topic-popover-btn-content-bug')
+const taskModalTopicBtnFeatureEl = $('.task-modal__topic-popover-btn-content-feature')
+const taskModalTopicBtnDesignEl = $('.task-modal__topic-popover-btn-content-design')
+const taskModalTopicBtnImprovementEl = $('.task-modal__topic-popover-btn-content-improvement')
+const taskModalTopicBtnResearchEl = $('.task-modal__topic-popover-btn-content-research')
+const taskModalTopicBtnDocsEl = $('.task-modal__topic-popover-btn-content-docs')
+
+const taskModalTopicBtnContents = {
+  default: taskModalTopicBtnDefaultEl,
+  bug: taskModalTopicBtnBugEl,
+  feature: taskModalTopicBtnFeatureEl,
+  design: taskModalTopicBtnDesignEl,
+  improvement: taskModalTopicBtnImprovementEl,
+  research: taskModalTopicBtnResearchEl,
+  docs: taskModalTopicBtnDocsEl,
+}
 
 const taskModalUserPopoverContentEl = $('.task-modal__user-popover-content')
-const taskModalUserPopoverBtnEl = $('.task-modal__user-btn')
+const taskModalUserPopoverBtnEl = $('.task-modal__user-popover-btn')
 const taskModalUserPopoverBtnTextEl = $('.task-modal__user-popover-btn-text')
 const taskModalUsersEl = $$('.task-modal__user')
 
@@ -26,7 +43,7 @@ export {
     taskModalTopicPopoverContentEl,
     taskModalTopicPopoverBtnEl,
     taskModalTopicItemsEl,
-    taskModalTopicBtnPathEl,
+    taskModalTopicBtnContents,
     taskModalUserPopoverContentEl,
     taskModalUserPopoverBtnEl,
     taskModalUserPopoverBtnTextEl,

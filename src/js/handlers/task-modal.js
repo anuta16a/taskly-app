@@ -3,7 +3,7 @@ import { addTask, editTask } from '../features/tasks-actions.js'
 import {
     taskModalEl, taskModalTitleEl, taskModalDescriptionEl,
     taskModalTopicPopoverContentEl, taskModalTopicPopoverBtnEl,
-    taskModalTopicItemsEl, taskModalTopicBtnPathEl,
+    taskModalTopicItemsEl, taskModalTopicBtnContents,
     taskModalUserPopoverContentEl, taskModalUserPopoverBtnEl, taskModalUserPopoverBtnTextEl,
     taskModalUsersEl,
     taskModalCancelBtnEl, taskModalConfirmBtnEl,
@@ -13,16 +13,18 @@ let editingTaskId = null
 let selectedTopic = null
 let selectedUser = null
 
-const topicColors = {
-    bug: '#8C2727',
-    improvement: '#DBD751',
-    feature: '#3C449D',
-    research: '#709460',
-    design: '#E3B778',
-    docs: '#898989'
+// Topic popover
+function showTopicBtnContent(topicName) {
+ 
+    for (const key in taskModalTopicBtnContents) {
+    taskModalTopicBtnContents[key].classList.add('task-modal__topic-popover-btn-content--hidden')
+    }
+
+    const showContent = topicName || 'default'
+    const targetEl = taskModalTopicBtnContents[showContent]
+    targetEl.classList.remove(`task-modal__topic-popover-btn-content--hidden`)
 }
 
-// Topic popover
 function handleClickTopicPopover(event) {
     event.preventDefault()
     event.stopPropagation()
@@ -65,8 +67,7 @@ function handleSelectTopic(event) {
 
     selectedTopic = topicName
 
-    const color = topicColors[topicName]
-    taskModalTopicBtnPathEl.setAttribute('fill', color)
+    showTopicBtnContent(topicName)
 }
 
 // User popover
@@ -126,7 +127,7 @@ function handleClickCancelBtn(event) {
     editingTaskId = null
     selectedTopic = null
     selectedUser = null
-    taskModalTopicBtnPathEl.setAttribute('fill', 'none')
+    showTopicBtnContent(null)
     const allTopicSelects = document.querySelectorAll('.task-modal__topic-select')
     allTopicSelects.forEach(element =>
         element.classList.add('task-modal__topic-select--hidden')
@@ -182,7 +183,7 @@ function setTopic(topic) {
         selectedTopicEl.classList.remove('task-modal__topic-select--hidden')
     }
 
-    taskModalTopicBtnPathEl.setAttribute('fill', topicColors[topic] ?? 'none')
+    showTopicBtnContent(topic)
 }
 
 function setUser(user) {
@@ -226,8 +227,6 @@ function openForEdit(taskId) {
 }
 
 function initTaskModalHandlers() {
-    taskModalTopicBtnPathEl.setAttribute('fill', 'none')
-
     taskModalTopicPopoverBtnEl.addEventListener('click', handleClickTopicPopover)
     taskModalTopicItemsEl.forEach(item => {
         item.addEventListener('click', handleSelectTopic)
