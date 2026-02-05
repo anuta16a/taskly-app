@@ -4,7 +4,7 @@ class Task {
     title = '',
     description = '',
     topic = 'bug',
-    location = 'upcomming',
+    location = 'upcoming',
     user = '',
     timeMinutes = 0,
   }) {

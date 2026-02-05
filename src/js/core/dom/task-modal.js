@@ -1,6 +1,6 @@
 import { $, $$ } from './helpers.js'
 
-const taskModalEl = $('.task-modal--hidden')
+const taskModalEl = $('.task-modal-overlay')
 const taskModalTitleEl = $('.task-modal__title')
 const taskModalDescriptionEl = $('.task-modal__description')
 const taskModalUserEl = $('.task-modal__user')

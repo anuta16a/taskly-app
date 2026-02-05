@@ -9,7 +9,7 @@ function addTask(payload) {
         title: payload.title,
         description: payload.description,
         topic: payload.topic,
-        location: 'upcomming',
+        location: 'upcoming',
         user: payload.user,
         // timeMinutes: payload.timeMinutes,
     })
@@ -52,7 +52,7 @@ function moveTask(taskId, newLocation) {
         return
     }
 
-    const validLocations = ['upcomming', 'inProgress', 'done']
+    const validLocations = ['upcoming', 'inProgress', 'done']
     if (!validLocations.includes(newLocation)) {
         console.error(`Invalid location: ${newLocation}`)
         return

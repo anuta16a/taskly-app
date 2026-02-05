@@ -12,10 +12,10 @@ function syncMoveCheck(taskEl) {
         const moveBtnEl = itemEl.querySelector('.task__move-name-btn')
         const moveIconEl = itemEl.querySelector('.task__move-select-icon')
 
-        moveIconEl.classList.add('task__move-select-icon--hidden') // скрываем все иконки
+        moveIconEl.classList.add('is-hidden') // скрываем все иконки
 
         if (moveBtnEl.dataset.location === taskLocation) {
-            moveIconEl.classList.remove('task__move-select-icon--hidden') // показываем иконку текущего местоположения
+            moveIconEl.classList.remove('is-hidden') // показываем иконку текущего местоположения
         }
     })
 }
@@ -34,16 +34,16 @@ function handleClickMovePopover(event) {
 
         // Закрываем предыдущий открытый popover если есть
         if (currentOpenMovePopover && currentOpenMovePopover !== popoverContentEl) {
-            currentOpenMovePopover.classList.add('task__move-popover-content--hidden')
+            currentOpenMovePopover.classList.add('is-hidden')
         }
 
-        const isHidden = popoverContentEl.classList.contains('task__move-popover-content--hidden')
+        const isHidden = popoverContentEl.classList.contains('is-hidden')
 
         if (isHidden) {
-            popoverContentEl.classList.remove('task__move-popover-content--hidden')
+            popoverContentEl.classList.remove('is-hidden')
             currentOpenMovePopover = popoverContentEl
         } else {
-            popoverContentEl.classList.add('task__move-popover-content--hidden')
+            popoverContentEl.classList.add('is-hidden')
             currentOpenMovePopover = null
         }
         return
@@ -60,7 +60,7 @@ function handleClickMovePopover(event) {
     if (currentOpenMovePopover) {
         const isClickInside = currentOpenMovePopover.contains(event.target)
         if (!isClickInside) {
-            currentOpenMovePopover.classList.add('task__move-popover-content--hidden')
+            currentOpenMovePopover.classList.add('is-hidden')
             currentOpenMovePopover = null
         }
     }
@@ -76,7 +76,7 @@ function handleSelectLocation(locationBtnEl) {
 
     // Если кликнули на текущую локацию — ничего не делаем
     if (taskEl.dataset.location === newLocation) {
-        currentOpenMovePopover.classList.add('task__move-popover-content--hidden')
+        currentOpenMovePopover.classList.add('is-hidden')
         currentOpenMovePopover = null
         return
     }

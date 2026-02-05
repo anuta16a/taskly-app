@@ -10,21 +10,21 @@ import {
 function handleClickAddTask() {
     taskModalTitleEl.value = ''
     taskModalDescriptionEl.value = ''
-    taskModalEl.classList.remove('task-modal--hidden')
+    taskModalEl.classList.remove('is-hidden')
 }
 
 // Delete all done tasks
 function handleClickDeleteAllDone() {
-    warningModalEl.classList.remove('warning-modal--hidden')
+    warningModalEl.classList.remove('is-hidden')
 }
 
 function handleCancelDeleteAllDone() {
-    warningModalEl.classList.add('warning-modal--hidden')
+    warningModalEl.classList.add('is-hidden')
 }
 
 function handleConfirmDeleteAllDone() {
     deleteAllDone()
-    warningModalEl.classList.add('warning-modal--hidden')
+    warningModalEl.classList.add('is-hidden')
 }
 
 function initColumnsHandlers() {

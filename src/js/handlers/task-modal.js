@@ -17,21 +17,21 @@ let selectedUser = null
 function showTopicBtnContent(topicName) {
  
     for (const key in taskModalTopicBtnContents) {
-    taskModalTopicBtnContents[key].classList.add('task-modal__topic-popover-btn-content--hidden')
+    taskModalTopicBtnContents[key].classList.add('is-hidden')
     }
 
     const showContent = topicName || 'default'
     const targetEl = taskModalTopicBtnContents[showContent]
-    targetEl.classList.remove(`task-modal__topic-popover-btn-content--hidden`)
+    targetEl.classList.remove(`is-hidden`)
 }
 
 function handleClickTopicPopover(event) {
     event.preventDefault()
     event.stopPropagation()
-    const isHidden = taskModalTopicPopoverContentEl.classList.contains('task-modal__topic-popover-content--hidden')
+    const isHidden = taskModalTopicPopoverContentEl.classList.contains('is-hidden')
 
     if (isHidden) {
-        taskModalTopicPopoverContentEl.classList.remove('task-modal__topic-popover-content--hidden')
+        taskModalTopicPopoverContentEl.classList.remove('is-hidden')
         document.addEventListener('click', handleClickOutsideTopicPopover)
     } else {
         closeTopicPopover()
@@ -47,7 +47,7 @@ function handleClickOutsideTopicPopover(event) {
 }
 
 function closeTopicPopover() {
-    taskModalTopicPopoverContentEl.classList.add('task-modal__topic-popover-content--hidden')
+    taskModalTopicPopoverContentEl.classList.add('is-hidden')
     document.removeEventListener('click', handleClickOutsideTopicPopover)
 }
 
@@ -58,12 +58,12 @@ function handleSelectTopic(event) {
     const topicSelectEl = topicItemEl.querySelector('.task-modal__topic-select')
     const topicName = topicSelectEl.dataset.topic
 
-    // Скрываем ВСЕ галочки (добавляем --hidden)
+    // Скрываем ВСЕ галочки (добавляем is-hidden)
     const allTopicSelects = document.querySelectorAll('.task-modal__topic-select')
-    allTopicSelects.forEach(el => el.classList.add('task-modal__topic-select--hidden'))
+    allTopicSelects.forEach(el => el.classList.add('is-hidden'))
 
-    // Показываем галочку выбранного топика (убираем --hidden)
-    topicSelectEl.classList.remove('task-modal__topic-select--hidden')
+    // Показываем галочку выбранного топика (убираем is-hidden)
+    topicSelectEl.classList.remove('is-hidden')
 
     selectedTopic = topicName
 
@@ -74,10 +74,10 @@ function handleSelectTopic(event) {
 function handleClickUserPopover(event) {
     event.preventDefault()
     event.stopPropagation()
-    const isHidden = taskModalUserPopoverContentEl.classList.contains('task-modal__user-popover-content--hidden')
+    const isHidden = taskModalUserPopoverContentEl.classList.contains('is-hidden')
 
     if (isHidden) {
-        taskModalUserPopoverContentEl.classList.remove('task-modal__user-popover-content--hidden')
+        taskModalUserPopoverContentEl.classList.remove('is-hidden')
         document.addEventListener('click', handleClickOutsideUserPopover)
     } else {
         closeUserPopover()
@@ -94,7 +94,7 @@ function handleClickOutsideUserPopover(event) {
 }
 
 function closeUserPopover() {
-    taskModalUserPopoverContentEl.classList.add('task-modal__user-popover-content--hidden')
+    taskModalUserPopoverContentEl.classList.add('is-hidden')
     document.removeEventListener('click', handleClickOutsideUserPopover)
 }
 
@@ -108,12 +108,12 @@ function handleSelectUser(event) {
     const userId = userItemEl.dataset.userId
 
     const allUserSelects = document.querySelectorAll('.task-modal__user-select')
-    allUserSelects.forEach(el => el.classList.add('task-modal__user-select--hidden'))
+    allUserSelects.forEach(el => el.classList.add('is-hidden'))
 
     selectedUser = userId
 
-    // Показываем галочку выбранного топика (убираем --hidden)
-    userSelectEl.classList.remove('task-modal__user-select--hidden')
+    // Показываем галочку выбранного топика (убираем is-hidden)
+    userSelectEl.classList.remove('is-hidden')
 
     const userNameEl = userItemEl.querySelector('.task-modal__user-name').innerText
     taskModalUserPopoverBtnTextEl.textContent = userNameEl
@@ -122,7 +122,7 @@ function handleSelectUser(event) {
 // Cancel button
 function handleClickCancelBtn(event) {
     event.preventDefault()
-    taskModalEl.classList.add('task-modal--hidden')
+    taskModalEl.classList.add('is-hidden')
     // Сброс выбора темы и пользователя
     editingTaskId = null
     selectedTopic = null
@@ -130,12 +130,12 @@ function handleClickCancelBtn(event) {
     showTopicBtnContent(null)
     const allTopicSelects = document.querySelectorAll('.task-modal__topic-select')
     allTopicSelects.forEach(element =>
-        element.classList.add('task-modal__topic-select--hidden')
+        element.classList.add('is-hidden')
     )
     taskModalUserPopoverBtnTextEl.textContent = 'Select user'
     const allUserSelects = document.querySelectorAll('.task-modal__user-select')
     allUserSelects.forEach(element =>
-        element.classList.add('task-modal__user-select--hidden')
+        element.classList.add('is-hidden')
     )
 }
 
@@ -176,11 +176,11 @@ function handleClickConfirmBtn(event) {
 // Helpers for edit
 function setTopic(topic) {
     document.querySelectorAll('.task-modal__topic-select').forEach(element => {
-        element.classList.add('task-modal__topic-select--hidden')
+        element.classList.add('is-hidden')
     })
     const selectedTopicEl = document.querySelector(`[data-topic="${topic}"]`)
     if (selectedTopicEl) {
-        selectedTopicEl.classList.remove('task-modal__topic-select--hidden')
+        selectedTopicEl.classList.remove('is-hidden')
     }
 
     showTopicBtnContent(topic)
@@ -188,7 +188,7 @@ function setTopic(topic) {
 
 function setUser(user) {
     document.querySelectorAll('.task-modal__user-select').forEach(element => {
-        element.classList.add('task-modal__user-select--hidden')
+        element.classList.add('is-hidden')
     })
 
     if (!user) {
@@ -202,7 +202,7 @@ function setUser(user) {
         if (btn.textContent.trim() === user) {
             const userItemEl = btn.closest('.task-modal__user')
             const userSelectEl = userItemEl.querySelector('.task-modal__user-select')
-            userSelectEl.classList.remove('task-modal__user-select--hidden')
+            userSelectEl.classList.remove('is-hidden')
         }
     })
 
@@ -214,7 +214,7 @@ function openForEdit(taskId) {
     const task = getTasks().find(task => String(task.id) === String(taskId))
     if (!task) return
 
-    taskModalEl.classList.remove('task-modal--hidden')
+    taskModalEl.classList.remove('is-hidden')
 
     editingTaskId = taskId
 
