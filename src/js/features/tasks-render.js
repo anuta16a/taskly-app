@@ -1,4 +1,4 @@
-import { getColumnEl, columnsEl, upcommingCounterEl, inProgressCounterEl, doneCounterEl, taskCardTemplateEl, } from '../core/dom/index.js'
+import { getColumnEl, columnsEl, upcomingCounterEl, inProgressCounterEl, doneCounterEl, taskCardTemplateEl, } from '../core/dom/index.js'
 import { getTasks } from '../core/state.js'
 
 function formatTime(timestamp) {
@@ -41,7 +41,7 @@ function renderTasks(tasks) {
     tasks = getTasks()
     columnsEl.forEach(column => column.innerHTML = '')
 
-    let upcommingCount = 0
+    let upcomingCount = 0
     let inProgressCount = 0
     let doneCount = 0
 
@@ -49,7 +49,7 @@ function renderTasks(tasks) {
         const column = getColumnEl(task.location)
         if (!column) return // защита от неправильного location
         // Обновление счетчиков
-        if (task.location === 'upcomming') upcommingCount = upcommingCount + 1
+        if (task.location === 'upcoming') upcomingCount = upcomingCount + 1
         else if (task.location === 'inProgress') inProgressCount = inProgressCount + 1
         else if (task.location === 'done') doneCount = doneCount + 1
         const taskEl = buildTaskEl(task)
@@ -57,7 +57,7 @@ function renderTasks(tasks) {
 
     })
     // Обновление отображения счетчиков
-    upcommingCounterEl.textContent = upcommingCount
+    upcomingCounterEl.textContent = upcomingCount
     inProgressCounterEl.textContent = inProgressCount
     doneCounterEl.textContent = doneCount
 }

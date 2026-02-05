@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parcel Vanilla App</title>
+  <title>Taskly</title>
   <link rel="stylesheet" href="./scss/app.scss">
   <script type="module" src="./js/app.js"></script>
 </head>
@@ -18,15 +18,15 @@
   </header>
   <main class="main">
     <div class="main__container">
-      <div class="column upcomming">
-        <div class="upcomming__header column__header">
-          <h2 class="upcomming__title column__title">Upcomming:</h2>
-          <p class="upcomming__counter column__counter">0</p>
+      <div class="column upcoming">
+        <div class="upcoming__header column__header">
+          <h2 class="upcoming__title column__title">Upcoming:</h2>
+          <p class="upcoming__counter column__counter">0</p>
         </div>
-        <div class="upcomming__body column__body" data-column="upcomming">
+        <div class="upcoming__body column__body" data-column="upcoming">
         </div>
-        <div class="upcomming__footer column__footer">
-          <button class="upcomming__add-btn column__btn" type="button">Add task</button>
+        <div class="upcoming__footer column__footer">
+          <button class="upcoming__add-btn column__btn" type="button">Add task</button>
         </div>
       </div>
       <div class="column in-progress">
@@ -52,7 +52,7 @@
   </main>
   <!-- Task card template -->
   <template class="card-template">
-    <div class="task" data-task-id="" data-location="upcomming">
+    <div class="task" data-task-id="" data-location="upcoming">
       <div class="task__header">
         <p class="task__title"></p>
         <div class="task__move-popover">
@@ -69,11 +69,11 @@
                 fill="#232323" />
             </svg>
           </button>
-          <div class="task__move-popover-content task__move-popover-content--hidden">
+          <div class="task__move-popover-content is-hidden">
             <ul class="task__move-list">
               <li class="task__move-item">
-                <button class="task__move-name-btn" type="button" data-location="upcomming">Upcomming</button>
-                <div class="task__move-select-icon task__move-select-icon--hidden">
+                <button class="task__move-name-btn" type="button" data-location="upcoming">Upcoming</button>
+                <div class="task__move-select-icon is-hidden">
                   <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 1.00003L3.1 7.00003L1 4.75003" stroke="#232323" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" />
@@ -82,7 +82,7 @@
               </li>
               <li class="task__move-item">
                 <button class="task__move-name-btn" type="button"  data-location="inProgress">In progress</button>
-                <div class="task__move-select-icon task__move-select-icon--hidden">
+                <div class="task__move-select-icon is-hidden">
                   <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 1.00003L3.1 7.00003L1 4.75003" stroke="#232323" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" />
@@ -91,7 +91,7 @@
               </li>
               <li class="task__move-item">
                 <button class="task__move-name-btn" type="button" data-location="done">Done</button>
-                <div class="task__move-select-icon task__move-select-icon--hidden">
+                <div class="task__move-select-icon is-hidden">
                   <svg width="9" height="8" viewBox="0 0 9 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 1.00003L3.1 7.00003L1 4.75003" stroke="#232323" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" />
@@ -116,7 +116,7 @@
             <path d="M6.91608 1.81027C6.89446 1.78821 6.86863 1.77072 6.84012 1.75884C6.81162 1.74696 6.78101 1.74093 6.75013 1.74111C6.68999 1.74075 6.63209 1.76391 6.58879 1.80566L1.55503 6.84052C1.53343 6.86195 1.51628 6.88744 1.50458 6.91554C1.49288 6.94363 1.48686 6.97376 1.48686 7.0042C1.48686 7.03463 1.49288 7.06476 1.50458 7.09285C1.51628 7.12095 1.53343 7.14644 1.55503 7.16787L3.83221 9.44555C3.85383 9.46761 3.87966 9.4851 3.90816 9.49698C3.93667 9.50886 3.96728 9.51489 3.99816 9.51471C4.05895 9.51384 4.11694 9.48898 4.1595 9.44555L9.18864 4.4153C9.23117 4.37143 9.25495 4.31273 9.25495 4.25162C9.25495 4.19052 9.23117 4.13181 9.18864 4.08794L6.91608 1.81027ZM1.08946 7.71193C1.05981 7.6843 1.02353 7.66481 0.984137 7.65534C0.94474 7.64586 0.903564 7.64674 0.864604 7.65787C0.825644 7.669 0.790222 7.69002 0.761775 7.71888C0.733328 7.74774 0.712822 7.78347 0.702246 7.82259L0.00618601 10.7135C-0.00303822 10.7521 -0.00192982 10.7924 0.00939959 10.8305C0.020729 10.8685 0.0418795 10.9029 0.0707214 10.9302C0.0985016 10.9583 0.132915 10.9789 0.170782 10.9902C0.20865 11.0015 0.248749 11.0031 0.287376 10.9947L3.19608 10.2985C3.23572 10.2891 3.27207 10.2691 3.30129 10.2407C3.3305 10.2123 3.35149 10.1765 3.36202 10.1371C3.37273 10.0979 3.37327 10.0566 3.36359 10.017C3.35391 9.9775 3.33434 9.94109 3.30671 9.91122L1.08946 7.71193ZM10.6637 1.31232L9.68649 0.334855C9.4691 0.120298 9.17598 0 8.87058 0C8.56517 0 8.27205 0.120298 8.05467 0.334855L7.4047 0.989571C7.38265 1.01027 7.36508 1.03527 7.35307 1.06302C7.34106 1.09078 7.33486 1.1207 7.33486 1.15094C7.33486 1.18119 7.34106 1.21111 7.35307 1.23887C7.36508 1.26662 7.38265 1.29162 7.4047 1.31232L9.68649 3.61766C9.70718 3.63971 9.73217 3.65728 9.75992 3.6693C9.78767 3.68132 9.81759 3.68752 9.84783 3.68752C9.87807 3.68752 9.90798 3.68132 9.93573 3.6693C9.96348 3.65728 9.98847 3.63971 10.0092 3.61766L10.6637 2.93989C10.8791 2.72382 11 2.43118 11 2.1261C11 1.82102 10.8791 1.52838 10.6637 1.31232Z" fill="#DFE1DB"/>
             </svg>
           </div>
-          <p class="task__edit-btn-text">Edit</p>
+          <span class="task__edit-btn-text">Edit</span>
         </button>
         <button class="task__delete-btn" type="button">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,28 +128,28 @@
   </template>
   <!-- МОДАЛЬНЫЕ ОКНА -->
   <!-- task modal -->
-  <div class="modal-overlay task-modal--hidden">
+  <div class="task-modal-overlay is-hidden">
     <div class="task-modal" role="dialog" aria-modal="true">
       <form action="" class="task-modal__form">
         <div class="task-modal__header">
           <input type="text" class="task-modal__title" name="title" id="newTaskTitle" placeholder="Title">
         </div>
-        <textarea class="task-modal__description" name="new-task__description" id="newTaslDescription"
+        <textarea class="task-modal__description" name="new-task__description" id="newTaskDescription"
           placeholder="Description" rows="5" maxlength="1500"></textarea>
           <div class="task-modal__popovers">
           <div class="task-modal__user-popover">
             <button class="task-modal__user-popover-btn task-modal__popover-btn">
-              <p class="task-modal__user-popover-btn-text">Select user</p>
+              <span class="task-modal__user-popover-btn-text">Select user</span>
               <div class="task-modal__user-popover-btn-icon">
-                <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.91 -3.96212e-05L12.97 1.06096L7.193 6.83996C7.10043 6.93312 6.99036 7.00704 6.86911 7.05749C6.74786 7.10794 6.61783 7.13391 6.4865 7.13391C6.35517 7.13391 6.22514 7.10794 6.10389 7.05749C5.98264 7.00704 5.87257 6.93312 5.78 6.83996L-2.65457e-07 1.06096L1.06 0.000960781L6.485 5.42496L11.91 -3.96212e-05Z" fill="#232323" fill-opacity="0.7"/>
-                </svg>
+               <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 0C6.67591 0 5.87033 0.244371 5.18512 0.70221C4.49992 1.16005 3.96587 1.81079 3.6505 2.57215C3.33514 3.33351 3.25262 4.17129 3.41339 4.97954C3.57417 5.7878 3.971 6.53023 4.55372 7.11295C5.13644 7.69566 5.87887 8.0925 6.68712 8.25327C7.49538 8.41404 8.33316 8.33153 9.09451 8.01617C9.85587 7.7008 10.5066 7.16675 10.9645 6.48154C11.4223 5.79634 11.6667 4.99076 11.6667 4.16667C11.6667 3.0616 11.2277 2.00179 10.4463 1.22039C9.66488 0.438987 8.60507 0 7.5 0ZM7.5 6.66667C7.00555 6.66667 6.5222 6.52004 6.11107 6.24534C5.69995 5.97064 5.37952 5.58019 5.1903 5.12338C5.00108 4.66656 4.95157 4.16389 5.04804 3.67894C5.1445 3.19399 5.3826 2.74853 5.73223 2.3989C6.08186 2.04927 6.52732 1.81117 7.01227 1.7147C7.49723 1.61824 7.99989 1.66775 8.45671 1.85697C8.91352 2.04619 9.30397 2.36662 9.57867 2.77774C9.85338 3.18886 10 3.67221 10 4.16667C10 4.82971 9.73661 5.46559 9.26777 5.93443C8.79893 6.40328 8.16304 6.66667 7.5 6.66667ZM15 15.8333V15C15 13.4529 14.3854 11.9692 13.2915 10.8752C12.1975 9.78125 10.7138 9.16667 9.16667 9.16667H5.83333C4.28624 9.16667 2.80251 9.78125 1.70854 10.8752C0.614581 11.9692 0 13.4529 0 15V15.8333H1.66667V15C1.66667 13.8949 2.10565 12.8351 2.88706 12.0537C3.66846 11.2723 4.72826 10.8333 5.83333 10.8333H9.16667C10.2717 10.8333 11.3315 11.2723 12.1129 12.0537C12.8943 12.8351 13.3333 13.8949 13.3333 15V15.8333H15Z" fill="#232323" fill-opacity="0.7"/>
+              </svg>
               </div>
             </button>
-            <div class="task-modal__user-popover-content task-modal__user-popover-content--hidden">
+            <div class="task-modal__user-popover-content is-hidden">
               <ul class="task-modal__user-list">
                 <li class="task-modal__user" data-user-id="1">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                  <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -158,7 +158,7 @@
                   <button class="task-modal__user-name" type="button">Walter White</button>
                 </li>
                 <li class="task-modal__user" data-user-id="2">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                  <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -167,7 +167,7 @@
                    <button class="task-modal__user-name"  type="button">Hank Schrader</button>
                 </li>
                 <li class="task-modal__user" data-user-id="3">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                     <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -176,7 +176,7 @@
                   <button class="task-modal__user-name"  type="button">Jesse Pinkman</button>
                 </li>
                 <li class="task-modal__user" data-user-id="4">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                  <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -185,7 +185,7 @@
                   <button class="task-modal__user-name"  type="button">Lalo Salamanca</button>
                 </li>
                 <li class="task-modal__user" data-user-id="5">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                  <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -194,7 +194,7 @@
                   <button class="task-modal__user-name" type="button">Saul Goodman</button>
                 </li>
                 <li class="task-modal__user" data-user-id="6">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                  <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -203,7 +203,7 @@
                   <button class="task-modal__user-name" data-user-id="6" type="button">Mike Ehrmantraut</button>
                 </li>
                 <li class="task-modal__user" data-user-id="7">
-                  <div class="task-modal__user-select task-modal__user-select--hidden">
+                  <div class="task-modal__user-select is-hidden">
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M13 1L4.6 11L1 7.25" stroke="#232323" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
@@ -216,44 +216,44 @@
           </div>
           <div class="task-modal__topic-popover">
             <button class="task-modal__topic-popover-btn task-modal__popover-btn" type="button">
-              <p class="task-modal__topic-popover-btn-content-default task-modal__topic-popover-btn-content-default--hidden">Select topic</p>
-              <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-bug task-modal__topic-popover-btn-content--hidden"> 
+              <span class="task-modal__topic-popover-btn-content-default">Select topic</span>
+              <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-bug is-hidden"> 
               <div class="task-modal__topic-color  task-modal__topic-color--btn task-modal__topic-color--bug">
                </div>
-               <p class="task-modal__topic-name task-modal__topic-name--btn">Bug</p>
+               <span class="task-modal__topic-name task-modal__topic-name--btn">Bug</span>
               </div>
-              <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-feature task-modal__topic-popover-btn-content--hidden"> 
+              <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-feature is-hidden"> 
               <div class="task-modal__topic-color task-modal__topic-color--btn task-modal__topic-color--feature">
                </div>
-               <p class="task-modal__topic-name task-modal__topic-name--btn">Feature</p>
+               <span class="task-modal__topic-name task-modal__topic-name--btn">Feature</span>
               </div>
-              <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-design task-modal__topic-popover-btn-content--hidden"> 
+              <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-design is-hidden"> 
               <div class="task-modal__topic-color  task-modal__topic-color--btn task-modal__topic-color--design">
                </div>
-               <p class="task-modal__topic-name task-modal__topic-name--btn">Design</p>
+               <span class="task-modal__topic-name task-modal__topic-name--btn">Design</span>
               </div>
-               <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-improvement task-modal__topic-popover-btn-content--hidden"> 
+               <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-improvement is-hidden"> 
               <div class="task-modal__topic-color  task-modal__topic-color--btn task-modal__topic-color--improvement">
                </div>
-               <p class="task-modal__topic-name task-modal__topic-name--btn">Improvement</p>
+               <span class="task-modal__topic-name task-modal__topic-name--btn">Improvement</span>
               </div>
-               <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-research task-modal__topic-popover-btn-content--hidden"> 
+               <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-research is-hidden"> 
               <div class="task-modal__topic-color  task-modal__topic-color--btn task-modal__topic-color--research">
                </div>
-               <p class="task-modal__topic-name task-modal__topic-name--btn">Research</p>
+               <span class="task-modal__topic-name task-modal__topic-name--btn">Research</span>
               </div>
-               <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-docs task-modal__topic-popover-btn-content--hidden"> 
+               <div class="task-modal__topic-popover-btn-content task-modal__topic-popover-btn-content-docs is-hidden"> 
               <div class="task-modal__topic-color  task-modal__topic-color--btn task-modal__topic-color--docs">
                </div>
-               <p class="task-modal__topic-name task-modal__topic-name--btn">Docs</p>
+               <span class="task-modal__topic-name task-modal__topic-name--btn">Docs</span>
               </div>
               <div class="task-modal__topic-popover-btn-icon">
-                <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M11.91 -3.96212e-05L12.97 1.06096L7.193 6.83996C7.10043 6.93312 6.99036 7.00704 6.86911 7.05749C6.74786 7.10794 6.61783 7.13391 6.4865 7.13391C6.35517 7.13391 6.22514 7.10794 6.10389 7.05749C5.98264 7.00704 5.87257 6.93312 5.78 6.83996L-2.65457e-07 1.06096L1.06 0.000960781L6.485 5.42496L11.91 -3.96212e-05Z" fill="#232323" fill-opacity="0.7"/>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V12H2V2H12V0ZM16 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V16H6V6H16V4ZM18 8H10C9.46957 8 8.96086 8.21071 8.58579 8.58579C8.21071 8.96086 8 9.46957 8 10V18C8 18.5304 8.21071 19.0391 8.58579 19.4142C8.96086 19.7893 9.46957 20 10 20H18C19.1 20 20 19.1 20 18V10C20 8.9 19.1 8 18 8Z" fill="#232323" fill-opacity="0.7"/>
                 </svg>
               </div>
             </button>
-            <div class="task-modal__topic-popover-content task-modal__topic-popover-content--hidden">
+            <div class="task-modal__topic-popover-content is-hidden">
               <h3 class="task-modal__topic-header">Topic</h3>
               <div class="task-modal__topic-decoration">
                 <svg width="265" height="1" viewBox="0 0 265 1" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -271,7 +271,7 @@
               <ul class="task-modal__topic-list">
                 <li class="task-modal__topic-item">
                   <div class="task-modal__topic-color task-modal__topic-color--bug">
-                    <div class="task-modal__topic-select task-modal__topic-select--hidden" data-topic="bug">
+                    <div class="task-modal__topic-select is-hidden" data-topic="bug">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 1L4.6 11L1 7.25" stroke="#DFE1DB" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
@@ -282,7 +282,7 @@
                 </li>
                 <li class="task-modal__topic-item">
                   <div class="task-modal__topic-color task-modal__topic-color--feature">
-                    <div class="task-modal__topic-select task-modal__topic-select--hidden" data-topic="feature">
+                    <div class="task-modal__topic-select is-hidden" data-topic="feature">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 1L4.6 11L1 7.25" stroke="#DFE1DB" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
@@ -293,7 +293,7 @@
                 </li>
                 <li class="task-modal__topic-item">
                   <div class="task-modal__topic-color task-modal__topic-color--design">
-                    <div class="task-modal__topic-select task-modal__topic-select--hidden" data-topic="design">
+                    <div class="task-modal__topic-select is-hidden" data-topic="design">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 1L4.6 11L1 7.25" stroke="#DFE1DB" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
@@ -304,7 +304,7 @@
                 </li>
                 <li class="task-modal__topic-item">
                   <div class="task-modal__topic-color task-modal__topic-color--improvement">
-                    <div class="task-modal__topic-select task-modal__topic-select--hidden" data-topic="improvement">
+                    <div class="task-modal__topic-select is-hidden" data-topic="improvement">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 1L4.6 11L1 7.25" stroke="#DFE1DB" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
@@ -315,7 +315,7 @@
                 </li>
                 <li class="task-modal__topic-item">
                   <div class="task-modal__topic-color task-modal__topic-color--research">
-                    <div class="task-modal__topic-select task-modal__topic-select--hidden" data-topic="research">
+                    <div class="task-modal__topic-select is-hidden" data-topic="research">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 1L4.6 11L1 7.25" stroke="#DFE1DB" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
@@ -326,7 +326,7 @@
                 </li>
                 <li class="task-modal__topic-item">
                   <div class="task-modal__topic-color task-modal__topic-color--docs">
-                    <div class="task-modal__topic-select task-modal__topic-select--hidden" data-topic="docs">
+                    <div class="task-modal__topic-select is-hidden" data-topic="docs">
                       <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 1L4.6 11L1 7.25" stroke="#DFE1DB" stroke-width="2" stroke-linecap="round"
                           stroke-linejoin="round" />
@@ -347,7 +347,7 @@
     </div>
   </div>
   <!-- Warning -->
-  <div class="modal-overlay warning-modal--hidden">
+  <div class="warning-modal-overlay is-hidden">
     <div class="warning-modal">
       <div class="warning-modal__header">
         <div class="warning-modal__icon">
