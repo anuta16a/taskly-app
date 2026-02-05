@@ -1,5 +1,5 @@
 import { initHandlers } from './handlers/index.js'
-import { initClock } from './core/time-format.js'
+import { initClock } from './core/clock.js'
 
 
 initHandlers()

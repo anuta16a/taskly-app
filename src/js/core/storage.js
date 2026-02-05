@@ -6,7 +6,7 @@ function getDataFromStorage() {
         // localStorage.setItem(localStorageKey, JSON.stringify([]))
         return []
     }
-    return JSON.parse(value)
+    return JSON.parse(value) 
 }
 
 function setDataToStorage(tasks) {
