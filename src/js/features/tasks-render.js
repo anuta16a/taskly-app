@@ -14,7 +14,7 @@ function formatTime(timestamp) {
 }
 
 function buildTaskEl(task) {
-    const cloneTask = taskCardTemplateEl.content.cloneNode(true)
+    const cloneTask = taskCardTemplateEl.content.cloneNode(true) // copies complete card 
     const taskEl = cloneTask.querySelector('.task')
 
     taskEl.dataset.id = task.id  // установка data-id для идентификации задачи
@@ -47,8 +47,8 @@ function renderTasks(tasks) {
 
     tasks.forEach(task => {
         const column = getColumnEl(task.location)
-        if (!column) return // защита от неправильного location
-        // Обновление счетчиков
+        if (!column) return // protects from wrong location
+        // counters update
         if (task.location === 'upcoming') upcomingCount = upcomingCount + 1
         else if (task.location === 'inProgress') inProgressCount = inProgressCount + 1
         else if (task.location === 'done') doneCount = doneCount + 1
