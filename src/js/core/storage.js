@@ -1,16 +1,15 @@
 const localStorageKey = 'taskly-tasks'
 
 function getDataFromStorage() {
-    const value = localStorage.getItem(localStorageKey)
+    const value = localStorage.getItem(localStorageKey) //returns string [...]
     if (!value) {
-        // localStorage.setItem(localStorageKey, JSON.stringify([]))
         return []
     }
-    return JSON.parse(value) 
+    return JSON.parse(value) //turns string value into array
 }
 
 function setDataToStorage(tasks) {
-    localStorage.setItem(localStorageKey, JSON.stringify(tasks))
+    localStorage.setItem(localStorageKey, JSON.stringify(tasks)) //turns array tasks into string [...]
 }
 
 export {

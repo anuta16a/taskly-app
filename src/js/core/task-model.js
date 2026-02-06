@@ -6,7 +6,6 @@ class Task {
     topic = 'bug',
     location = 'upcoming',
     user = '',
-    timeMinutes = 0,
   }) {
     this.id = id
     this.title = title.trim()
