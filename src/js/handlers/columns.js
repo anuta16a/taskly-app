@@ -5,9 +5,13 @@ import {
     warningModalEl,
     deleteAllDoneBtnEl, warningModalCancelBtnEl, warningModalConfirmBtnEl,
 } from '../core/dom/index.js'
+import { logEvent } from 'firebase/analytics'
+import { analytics } from '../firebase.js'
 
 // Add task btn
 function handleClickAddTask() {
+    logEvent(analytics, 'add_task_click')
+    console.log('CLICK SENT')
     taskModalTitleEl.value = ''
     taskModalDescriptionEl.value = ''
     taskModalEl.classList.remove('is-hidden')
