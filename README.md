@@ -1,6 +1,6 @@
 # Taskly
 
-Kanban-style task management app built with vanilla JavaScript. Organize tasks across three workflow stages — Upcoming, In Progress, and Done — with full CRUD operations and local persistence.
+Kanban-style task management app built with vanilla JavaScript. Organize tasks across three workflow stages — Upcoming, In Progress, and Done — with full CRUD operations, local persistence, and responsive layout.
 
 ## Features
 
@@ -12,6 +12,9 @@ Kanban-style task management app built with vanilla JavaScript. Organize tasks a
 - **LocalStorage persistence** — data survives page reloads
 - **Live clock** in the header
 - **Glassmorphism UI** with backdrop blur and gradient effects
+- **Responsive layout** — adapts to desktop, tablet, and mobile viewports
+- **GA4 analytics** — event tracking via Google Analytics 4
+- **A/B testing** — CTA text controlled by Firebase Remote Config
 
 ## Tech Stack
 
@@ -19,6 +22,16 @@ Kanban-style task management app built with vanilla JavaScript. Organize tasks a
 - **SCSS**
 - **JavaScript** (ES6 modules, no frameworks)
 - **Parcel** (bundler)
+- **Firebase** — Hosting, Analytics (GA4), Remote Config
+
+## Responsive Breakpoints
+
+| Breakpoint | Width | Layout |
+|---|---|---|
+| Desktop | > 992px | 3 columns in a row |
+| Tablet | ≤ 992px | 3 columns, compact sizing |
+| Small tablet | ≤ 768px | 2-column grid + Done spans full width |
+| Mobile | ≤ 480px | Single column, stacked vertically |
 
 ## Project Structure
 
@@ -26,7 +39,8 @@ Kanban-style task management app built with vanilla JavaScript. Organize tasks a
 src/
 ├── index.html
 ├── js/
-│   ├── app.js                  # Entry point
+│   ├── app.js                  # Entry point + Remote Config init
+│   ├── firebase.js             # Firebase SDK configuration
 │   ├── core/
 │   │   ├── state.js            # Centralized state management
 │   │   ├── storage.js          # LocalStorage interface
@@ -36,12 +50,14 @@ src/
 │   ├── features/
 │   │   ├── tasks-render.js     # Rendering logic
 │   │   └── tasks-actions.js    # CRUD operations
-│   └── handlers/               # Event listeners
+│   └── handlers/               # Event listeners + GA4 event tracking
 ├── scss/
-│   ├── app.scss
+│   ├── app.scss                # Styles + responsive media queries
 │   └── _fonts.scss
 ├── images/
 └── fonts/
+firebase.json                   # Firebase Hosting config
+.firebaserc                     # Firebase project reference
 ```
 
 ## Getting Started
@@ -50,6 +66,14 @@ src/
 npm install
 npm start       # Dev server (localhost:1234)
 npm run build   # Production build → dist/
+```
+
+## Deploy
+
+The app is hosted on Firebase Hosting. After building:
+
+```bash
+firebase deploy
 ```
 
 ## Design

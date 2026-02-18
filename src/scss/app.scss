@@ -23,6 +23,11 @@ $designColor: #CA9A4C;
 $docsColor: #898989;
 $researchColor: #709460;
 
+//Breakpoints
+$bp-tablet: 992px;
+$bp-small-tablet: 768px;
+$bp-mobile: 480px;
+
 // Mixins
 @mixin text(
     $size,
@@ -35,7 +40,7 @@ $researchColor: #709460;
     font-size: $size;
     font-weight: $weight;
     color: $color;
-    line-height: lineHeight;
+    line-height: $lineHeight;
     letter-spacing: $letterSpacing;
 }
 
@@ -74,16 +79,39 @@ body {
         padding: 20px 40px;
         margin: 0 auto;
     }
+    @media (max-width: $bp-tablet) {
+    &__container {
+        max-width: 940px;
+        padding: 10px 26px;
+      }
+    }
 
     &__logo {
         @include text(42px, 300, $lightColor, normal, 3px)
     }
+    @media (max-width: $bp-tablet) {
+     &__logo {
+        @include text(36px, 300, $lightColor, normal, 3px)
+      }
+    }
+    @media (max-width: $bp-mobile) {
+     &__logo {
+        @include text(28px, 300, $lightColor, normal, 3px)
+      }
+    }
 
     &__current-time {
-        font-weight: 500;
-        font-size: 28px;
-        letter-spacing: 2px;
-        color: rgba($lightColor, 0.7);
+        @include text(28px, 500, rgba($lightColor, 0.7), normal, 2px)
+    }
+    @media (max-width: $bp-tablet) {
+     &__current-time {
+        @include text(22px, 500, rgba($lightColor, 0.7), normal, 2px)
+      }
+    }
+    @media (max-width: $bp-mobile) {
+     &__current-time {
+        @include text(20px, 500, rgba($lightColor, 0.7), normal, 2px)
+      }
     }
 }
 
@@ -95,6 +123,29 @@ body {
         @include flex(flex-start, center, 30px);
         margin: 0 auto;
         padding: 40px 20px 100px;
+    }
+    @media (max-width: $bp-tablet) {
+     &__container {
+        max-width: 940px;
+        @include flex(flex-start, center, 20px);
+        padding: 20px 15px 50px;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+     &__container {
+        max-width: 760px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "upcoming inprogress"
+                             "done done";
+        gap: 20px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+     &__container {
+        max-width: 350px;
+        display: block;
+      }
     }
 }
 
@@ -111,17 +162,78 @@ body {
         @include flex();
         border: 0.3px solid rgba($lightColor, 0.25);
     }
+    @media (max-width: $bp-tablet) {
+     &__header {
+        padding: 10px 20px;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+     &__header {
+        padding: 12px 25px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+     &__header {
+        padding: 10px 20px;
+      }
+    }
+
 
     &__title {
         @include text(18px, 400, $lightColor, normal, 1px)
+    }
+    @media (max-width: $bp-tablet) {
+    &__title {
+        @include text(14px, 400, $lightColor, normal, 1px)
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__title {
+        @include text(18px, 400, $lightColor, normal, 1px)
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__title {
+        @include text(14px, 400, $lightColor, normal, 1px)
+      }
     }
 
     &__counter {
         @include text(20px, 600, $lightColor, normal, normal)
     }
-
+    @media (max-width: $bp-tablet) {
+    &__counter {
+        @include text(15px, 600, $lightColor, normal, normal)
+      }
+    }
+    @media (max-width: $bp-tablet) {
+    &__counter {
+        @include text(20px, 600, $lightColor, normal, normal)
+      }
+    }
+     @media (max-width: $bp-mobile) {
+    &__counter {
+        @include text(15px, 600, $lightColor, normal, normal)
+      }
+    }
+    
     &__body {
         padding: 20px;
+    }
+    @media (max-width: $bp-tablet) {
+    &__body {
+        padding: 12px 8px;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__body {
+        padding: 15x 10px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__body {
+        padding: 12px 8px;
+      }
     }
 
     &__btn {
@@ -133,7 +245,36 @@ body {
         border: 0.3px solid rgba($lightColor, 0.25);
         cursor: pointer;
     }
+    @media (max-width: $bp-tablet) {
+    &__btn {
+        @include text(14px, 400, $lightColor, normal, 1px);
+        width: 100%;
+        padding: 10px 0;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__btn {
+        @include text(18px, 400, $lightColor, normal, 1px);
+        width: 100%;
+        padding: 12px 0;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__btn {
+        @include text(14px, 400, $lightColor, normal, 1px);
+        width: 100%;
+        padding: 10px 0;
+      }
+    }
 }
+@media (max-width: $bp-mobile) {
+    .column {
+       margin-bottom: 20px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+      }
+    }
 
 // Upcoming Column
 .upcoming {
@@ -166,6 +307,9 @@ body {
         }
     }
 }
+@media (max-width: $bp-small-tablet) {
+    .upcoming { grid-area: upcoming; }
+    }
 
 // In Progress Column
 .in-progress {
@@ -180,6 +324,9 @@ body {
         color:  rgba($lightColor, 0.85);
     }
 }
+@media (max-width: $bp-small-tablet) {
+    .in-progress { grid-area: inprogress; }
+    }
 
 // Done Column
 .done {
@@ -193,6 +340,19 @@ body {
     &__title, 
     &__counter {
         color: $darkColor;
+    }
+
+    @media (max-width: $bp-small-tablet) {
+        &__body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    }
+    @media (max-width: $bp-mobile) {
+        &__body {
+            display: block;
+        }
     }
 
     &__delete-btn {
@@ -212,6 +372,9 @@ body {
         }
     }
 }
+@media (max-width: $bp-small-tablet) {
+    .done { grid-area: done; }
+    }
 
 // Task Card
 .task {
@@ -220,7 +383,6 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 24px rgba($darkColor, 0.25);
     margin-bottom: 15px;
-
     &:last-child {
         margin-bottom: 0;
     }
@@ -240,11 +402,44 @@ body {
         margin-bottom: 10px;
         position: relative;
     }
+    @media (max-width: $bp-tablet) {
+    &__header  {
+        padding: 7px 10px;
+        margin-bottom: 7px;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__header  {
+        padding: 9px 10px;
+        margin-bottom: 8px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__header  {
+        padding: 7px 10px;
+        margin-bottom: 7px;
+      }
+    }
 
     &__title {
         width: 100%;
         @include text(16px, 500, $darkColor, normal, normal);
         text-align: center;
+    }
+    @media (max-width: $bp-tablet) {
+    &__title {
+        @include text(14px, 500, $darkColor, normal, normal);
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__title {
+        @include text(15px, 500, $darkColor, normal, normal);
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__title {
+        @include text(14px, 500, $darkColor, normal, normal);
+      }
     }
 
     &__move-popover {
@@ -267,7 +462,7 @@ body {
     &__move-popover-content {
         position: absolute;
         top: calc(100% + 10px);
-        right: -30px;
+        right: -31px;
         width: max-content;
         background-color: rgba($lightColor, 0.60);
         backdrop-filter: blur(6px);
@@ -324,10 +519,45 @@ body {
         background-color: rgba($lightColor, 0.60);
         margin-bottom: 15px;
     }
+    @media (max-width: $bp-tablet) {
+    &__body {
+       padding: 7px 10px;
+       margin-bottom: 7px;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__body {
+       padding: 10px;
+       margin-bottom: 8px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__body {
+       padding: 7px 10px;
+       margin-bottom: 7px;
+      }
+    }
 
     &__description {
         @include text(13px, 400, $darkColor, 17px, normal);
         margin-bottom: 10px;
+    }
+    @media (max-width: $bp-tablet) {
+    &__description {
+       @include text(12px, 400, $darkColor, 13px, normal);
+       margin-bottom: 5px;
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__description {
+       @include text(13px, 400, $darkColor, 14px, normal);
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__description {
+       @include text(12px, 400, $darkColor, 13px, normal);
+       margin-bottom: 5px;
+      }
     }
 
     &__meta {
@@ -335,13 +565,48 @@ body {
         padding-top: 8px;
         border-top: 1px solid rgba($darkColor, 0.1);
     }
+    @media (max-width: $bp-tablet) {
+    &__meta {
+       padding-top: 5px;
+      }
+    }
 
     &__user {
         @include text(12px, 600, rgba($darkColor, 0.80), normal, normal);
     }
+    @media (max-width: $bp-tablet) {
+    &__user {
+       @include text(10px, 600, rgba($darkColor, 0.80), normal, normal);
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__user {
+       @include text(11px, 600, rgba($darkColor, 0.80), normal, normal);
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__user {
+       @include text(10px, 600, rgba($darkColor, 0.80), normal, normal);
+      }
+    }
 
     &__time {
         @include text(11px, 400, rgba($darkColor, 0.90), normal, normal); 
+    }
+    @media (max-width: $bp-tablet) {
+    &__time {
+       @include text(9px, 400, rgba($darkColor, 0.90), normal, normal); 
+      }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__time {
+       @include text(10px, 400, rgba($darkColor, 0.90), normal, normal); 
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__time {
+       @include text(9px, 400, rgba($darkColor, 0.90), normal, normal); 
+      }
     }
 
     &__controls {
@@ -372,9 +637,55 @@ body {
         }
 
     }
+    @media (max-width: $bp-tablet) {
+    &__edit-btn  {
+        padding: 2px 8px;
+      }
+    }
+    @media (max-width: $bp-tablet) {
+    &__edit-btn  {
+        padding: 3px 10px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__edit-btn  {
+        padding: 2px 8px;
+      }
+    }
+
+    @media (max-width: $bp-tablet) {
+        &__edit-btn-icon {
+            transform: scale(0.8);
+        }
+    }
+    @media (max-width: $bp-small-tablet) {
+        &__edit-btn-icon {
+            transform: scale(1.10);
+        }
+    }
+    @media (max-width: $bp-mobile) {
+        &__edit-btn-icon {
+            transform: scale(0.8);
+        }
+    } 
 
     &__edit-btn-text {
         @include text(12px, 500, $lightColor, normal, 1px);
+    }
+    @media (max-width: $bp-tablet) {
+    &__edit-btn-text  {
+        @include text(10px, 500, $lightColor, 14px, 1px);
+      }
+    }
+     @media (max-width: $bp-small-tablet) {
+    &__edit-btn-text  {
+        @include text(11px, 500, $lightColor, 14px, 1px);
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__edit-btn-text  {
+        @include text(10px, 500, $lightColor, 14px, 1px);
+      }
     }
 
     &__delete-btn {
@@ -384,7 +695,7 @@ body {
         background-color: $redColor;
         opacity: 0.8;
         box-shadow: 0 4px 16px rgba($darkColor, 0.15);
-        padding: 3px 10px;
+        padding: 3px 10px 2px;
         cursor: pointer;
         transition: opacity 0.1s linear,
                     transform 0.1s linear;
@@ -398,14 +709,51 @@ body {
             transform: scale(1.00);
         }
     }
+    @media (max-width: $bp-tablet) {
+        &__delete-btn {
+            padding: 4px 6px 0px;
+        }
+    } 
+    @media (max-width: $bp-small-tablet) {
+        &__delete-btn {
+            padding: 4px 8px 0px;
+        }
+    }
+    @media (max-width: $bp-mobile) {
+        &__delete-btn {
+            padding: 4px 6px 0px;
+        }
+    } 
+
+    @media (max-width: $bp-tablet) {
+        &__delete-btn-icon {
+            transform: scale(0.75);
+        }
+    } 
+    @media (max-width: $bp-tablet) {
+        &__delete-btn-icon {
+            transform: scale(1.10);
+        }
+    }
+    @media (max-width: $bp-tablet) {
+        &__delete-btn-icon {
+            transform: scale(0.9);
+        }
+    }  
 }
+@media (max-width: $bp-tablet) {
+    .task {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+    }
 
 // Modal Overlay
 .task-modal-overlay,
 .warning-modal-overlay {
     position: fixed;
     inset: 0;
-    @include flex($justify: center);
+    @include flex($align: flex-start, $justify: center);
     background: rgba($darkColor, 0.5);
     z-index: 1000;
 }
@@ -415,6 +763,7 @@ body {
     max-width: 600px;
     width: 100%;
     padding: 30px 40px;
+    margin: 200px 20px 0;
     border-radius: 15px;
     border: 0.3px solid rgba($lightColor, 0.30);
     background: linear-gradient(180deg, rgba($lightColor, 0.70) 0%, $lightBrownColor 50%, rgba($brownColor, 0.70) 100%);
@@ -432,10 +781,21 @@ body {
         border: none;
         border-radius: 8px;
         background-color: rgba($lightColor, 0.8);
-
         &::placeholder {
             color: rgba($darkColor, 0.5);
         }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__title  {
+        font-size: 16px;
+        padding: 7px 15px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__title  {
+        font-size: 14px;
+        padding: 5px 10px;
+      }
     }
 
     &__description {
@@ -448,22 +808,45 @@ body {
         border-radius: 8px;
         background-color: rgba($lightColor, 0.60);
         margin-bottom: 10px;
-
         &::placeholder {
             color: rgba($darkColor, 0.4);
         }
     }
+    @media (max-width: $bp-small-tablet) {
+    &__description  {
+        font-size: 15px;
+        padding: 7px 15px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__description  {
+        font-size: 13px;
+        padding: 5px 10px;
+      }
+    }
+
     &__popovers {
-        @include flex();
         margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        gap: 10px;
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__popovers  {
+        margin-bottom: 15px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__popovers  {
+        margin-bottom: 10px;
+      }
     }
 
     &__user-popover {
-        max-width: 200px;
         width: 100%;
     }
+
     &__topic-popover {
-        max-width: 300px;
         width: 100%;
     }
 
@@ -487,6 +870,18 @@ body {
             transform: scale(1.00);
         }
     }
+    @media (max-width: $bp-small-tablet) {
+    &__popover-btn {
+        font-size: 14px;
+        padding: 7px 15px;
+      }
+    }
+    @media (max-width: 520px) {
+    &__popover-btn  {
+        font-size: 13px;
+        padding: 5px 10px;
+      }
+    }
 
     &__user-popover {
         position: relative;
@@ -502,6 +897,11 @@ body {
         border-radius: 4px;
         padding: 14px;
         box-shadow: 0 4px 16px rgba($darkColor, 0.15);
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__user-popover-content {
+       padding: 10px;
+    }
     }
 
     &__user-list {
@@ -520,6 +920,14 @@ body {
             background-color: rgba($darkColor, 0.1);
         }
     }
+     @media (max-width: $bp-small-tablet) {
+    &__user {
+        margin-bottom: 2px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    }
 
     &__user-name {
         @include text(14px, 400, $darkColor, normal, normal);
@@ -527,6 +935,18 @@ body {
         background: transparent;
         padding: 6px 10px;
         cursor: pointer;
+    }
+    @media (max-width: 550px) {
+    &__user-name {
+       font-size: 13px;
+        padding: 5px 8px;
+    }
+    }
+     @media (max-width: 500px) {
+    &__user-name {
+       font-size: 12px;
+        padding: 3px 5px;
+    }
     }
 
     &__user-select {
@@ -555,15 +975,22 @@ body {
         box-shadow: 0 4px 16px rgba($darkColor, 0.15);
         z-index: 10;
     }
+    @media (max-width: $bp-small-tablet) {
+    &__topic-popover-content{
+       padding: 10px 5px;
+    }
+    }
 
     &__topic-header {
         @include text(18px, 500, rgba($darkColor, 0.85), normal, normal);
-        margin-bottom: 5px;
-    }
-
-    &__topic-decoration {
-        line-height: 0;
+        padding-bottom: 5px;
+        border-bottom: 0.3px solid rgba($brownColor, 0.3);
         margin-bottom: 10px;
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__topic-header{
+       padding: 0 5px 5px;
+    }
     }
 
     &__topic-list {
@@ -572,6 +999,16 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 5px;
     }
+     @media (max-width: $bp-mobile) {
+    &__topic-list{
+       gap: 3px;
+    }
+    }
+    @media (max-width: 430px) {
+    &__topic-list{
+       display: block;
+    }
+    }
 
     &__topic-item {
         @include flex($justify: flex-start, $gap: 10px);
@@ -579,10 +1016,31 @@ body {
         border-radius: 8px;
         cursor: pointer;
         transition: background-color 0.1s linear;
-
         &:hover {
             background-color: rgba($darkColor, 0.05);
         }
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__topic-item {
+        gap: 5px;
+       padding: 3px;
+    }
+    }
+    @media (max-width: $bp-mobile) {
+    &__topic-item {
+        gap: 3px;
+       padding: 0;
+    }
+    }
+    @media (max-width: 430px) {
+    &__topic-item {
+        gap: 7px;
+       margin-bottom: 3px;
+       padding: 2px;
+       &:last-child {
+        margin-bottom: 0px;
+       }
+    }
     }
 
     &__topic-color {
@@ -594,6 +1052,22 @@ body {
         &:hover {
             transform: scale(1.10);
         }
+    }
+    @media (max-width: 650px) {
+    &__topic-color {
+       transform: scale(0.8);
+       &:hover {
+            transform: scale(0.95);
+        }
+    }
+    }
+     @media (max-width: 430px) {
+    &__topic-color {
+       transform: scale(0.95);
+       &:hover {
+            transform: scale(1.05);
+        }
+    }
     }
 
     &__topic-select {
@@ -620,9 +1094,32 @@ body {
             font-size: 16px;
         }
     }
+    @media (max-width: 550px) {
+    &__topic-name {
+       font-size: 12px;
+    &--btn {
+       font-size: 14px;
+    }
+    }
+    }
+    @media (max-width: 430px) {
+    &__topic-name {
+       font-size: 13px;
+    }
+    }
 
     &__controls {
         @include flex($justify: flex-end, $gap: 20px);
+    }
+    @media (max-width: 550px) {
+    &__controls {
+       gap: 15px;
+    }
+    }
+    @media (max-width: 480px) {
+    &__controls {
+       gap: 10px;
+    }
     }
 
     &__control-btn {
@@ -663,13 +1160,39 @@ body {
             }
         }
     }
+    @media (max-width: 550px) {
+    &__control-btn {
+        font-size: 16px;
+       padding: 5px 20px;
+    }
+    }
+    @media (max-width: $bp-mobile) {
+    &__control-btn {
+        font-size: 15px;
+       padding: 5px 15px;
+    }
+    }
 }
+
+@media (max-width: $bp-small-tablet) {
+    .task-modal  {
+        padding: 20px 30px;
+        margin-top: 100px;
+      }
+    }
+@media (max-width: $bp-mobile) {
+    .task-modal  {
+        padding: 20px 20px;
+      }
+    }
+
 
 // Warning Modal
 .warning-modal {
     max-width: 420px;
     width: 100%;
     padding: 20px 30px;
+    margin: 200px 20px 0;
     border-radius: 15px;
     border: 0.3px solid rgba($lightColor, 0.25);
     background: linear-gradient(180deg, rgba($lightColor, 0.70) 0%, rgba($lightBrownColor, 0.60) 50%, rgba($brownColor, 0.50) 100%);
@@ -680,27 +1203,68 @@ body {
         @include flex($justify: center, $gap: 10px);
         margin-bottom: 8px;
     }
+    @media (max-width: $bp-small-tablet) {
+    &__header {
+        margin-bottom: 5px;
+      }
+    }
 
     &__icon {
         transform: scale(1.3);
     }
+    @media (max-width: $bp-small-tablet) {
+    &__icon {
+        transform: scale(1.1);
+      }
+    }
 
     &__title {
         @include text(20px, 600, rgba($darkColor, 0.90), normal, normal);
+    }
+     @media (max-width: $bp-small-tablet) {
+    &__title {
+       font-size: 18px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__title {
+       font-size: 16px;
+      }
     }
 
     &__line {
         line-height: 0;
         margin-bottom: 10px;
     }
+    @media (max-width: $bp-small-tablet) {
+    &__line {
+       margin-bottom: 7px;
+      }
+    }
 
     &__text {
         @include text(16px, 400, rgba($darkColor, 0.85), 20px, normal);
         margin-bottom: 20px;
     }
+    @media (max-width: $bp-small-tablet) {
+    &__text {
+       font-size: 14px;
+       margin-bottom: 15px;
+      }
+    }
 
     &__controls {
         @include flex($justify: center, $gap: 20px);
+    }
+    @media (max-width: $bp-small-tablet) {
+    &__controls {
+       gap: 15px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__controls {
+       gap: 10px;
+      }
     }
 
     &__btn {
@@ -739,4 +1303,29 @@ body {
             }
         }
     }
+    @media (max-width: $bp-small-tablet) {
+    &__btn {
+        font-size: 16px;
+        padding: 5px 20px;
+      }
+    }
+    @media (max-width: $bp-mobile) {
+    &__btn {
+        font-size: 15px;
+        padding: 5px 15px;
+      }
+    }
 }
+@media (max-width: $bp-small-tablet) {
+    .task-modal  {
+        padding: 15px;
+        margin-top: 100px;
+      }
+    }
+@media (max-width: $bp-small-tablet) {
+    .task-modal  {
+        padding: 10px;
+        margin-top: 70px;
+      }
+    }
+
