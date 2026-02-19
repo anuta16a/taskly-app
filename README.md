@@ -6,6 +6,7 @@ Kanban-style task management app built with vanilla JavaScript. Organize tasks a
 
 - **Kanban board** with three columns: Upcoming, In Progress, Done
 - **Task CRUD:** create, edit, delete, move between columns
+- **Drag & Drop** — move tasks between columns by dragging (custom mouse-event implementation)
 - **Task properties:** title, description, topic (Bug / Feature / Design / Improvement / Research / Docs), assigned user
 - **Bulk delete** completed tasks with confirmation dialog
 - **Popover menus** for moving tasks and selecting topic/user
@@ -52,7 +53,9 @@ src/
 │   ├── features/
 │   │   ├── tasks-render.js     # Rendering logic
 │   │   └── tasks-actions.js    # CRUD operations
-│   └── handlers/               # Event listeners + GA4 event tracking
+│   └── handlers/
+│       ├── drag-drop.js        # Custom drag & drop (mouse events)
+│       └── ...                 # Other event listeners + GA4 tracking
 ├── scss/
 │   ├── app.scss                # Styles + responsive media queries
 │   └── _fonts.scss

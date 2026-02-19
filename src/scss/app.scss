@@ -383,6 +383,18 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 24px rgba($darkColor, 0.25);
     margin-bottom: 15px;
+    cursor: grab;
+
+    &.is-dragging {
+        visibility: hidden;
+    }
+
+    &.is-drag-clone {
+        position: fixed;
+        z-index: 2000;
+        pointer-events: none;
+    }
+
     &:last-child {
         margin-bottom: 0;
     }
@@ -461,6 +473,7 @@ body {
 
     &__move-popover-content {
         position: absolute;
+        z-index: 10;
         top: calc(100% + 10px);
         right: -31px;
         width: max-content;
